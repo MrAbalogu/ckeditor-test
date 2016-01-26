@@ -1,33 +1,74 @@
-<p id="notice"><%= notice %></p>
+<header class="intro-header header1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Inspiring a new Generation!</h1>
+                    <hr class="small">
+                </div>
+                <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://twitter.com/MrAbalogu_">
+                                <span class="fa-stack fa-lg myIcon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/chinedu.abalogu">
+                                <span class="fa-stack fa-lg myIcon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/MrAbalogu/Blog">
+                                <span class="fa-stack fa-lg myIcon">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row"> 
+   <div id="postSection" class="all-post-container ten columns">
+    <div class="post fade-in one"> 
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="post-container">
+          <div class="title-container font-huge-regular"><%= truncate(post.title) %></div>
+          <div class="date-container font-small-regular">Posted at: <%= post.created_at %></div>
+          <div class="post-sub-container">
+            <div class="post-image-container" style="background-image: url(<%=post.avatar.url(:medium)%>);"></div>
+            <div class="desc-container font-extrasmall-light"> <%= truncate(post.description, length:300 ) %>  </div>
+            <%= button_to "Read", post_path(post), :method => "get", :class => "post-button" %>
+          </div>
+      </div>
+  <% end %>     
+    </div>
+  </div> 
+  <div class="two columns post_container">
+  <% cache do %>
+    All Posts:
+    <div class="posts_list">
+    <% @posts.each do |post| %>
+      <%= link_to post.title, post_path(post) %>
     <% end %>
-  </tbody>
-</table>
-
+    </div>
+  <% end %>  
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Post', new_post_path %>

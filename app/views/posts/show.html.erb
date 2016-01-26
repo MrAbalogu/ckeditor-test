@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
+	<header class="intro-header" style="background-image: url(<%=@post.avatar.url%>);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1><%= @post.title %></h1>
+                        <p> <%= link_to "back", posts_path %> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                    <p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+                    	<%= raw(@post.content) %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= raw(@post.content) %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+                    	<%= render "disqus" %>
+                    </p>
+                </div>    
+            </div>
+        </div>
+    </article>        
