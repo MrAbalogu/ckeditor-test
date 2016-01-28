@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ckeditor'
 gem 'paperclip'
+gem 'shareable'
 
 
 group :development, :test do

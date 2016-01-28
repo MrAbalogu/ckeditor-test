@@ -16,15 +16,16 @@
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
                     <p> 
-                        <% @youtube.each do |v| %>
+                        <div class="video-container"> <% @youtube.each do |v| %>
                           <%= embed(v.link) %>
-                        <% end %>
+                        <% end %> </div>
 
                     	<%= raw(@post.content) %>
 
                         <div class="views">
                           views: <%=@post.impressionist_count %>
                         </div>
+                        <div> <%= render_shareable %> </div>
 
                     	<%= render "disqus" %>
                     </p>
