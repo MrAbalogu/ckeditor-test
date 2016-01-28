@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @subscriber = Subscriber.new
   end
 
   def new
@@ -12,6 +13,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+        params[:youtubes]['link'].each do |a|
+        @video = @post.youtubes.create!(:link => a)
+        end
         flash[:notice] = "Post was successfully created"
         redirect_to post_path(@post)
     else 
@@ -20,6 +24,7 @@ class PostsController < ApplicationController
   end
  
   def show
+    @youtube = @post.youtubes.all
   end
 
   def edit 

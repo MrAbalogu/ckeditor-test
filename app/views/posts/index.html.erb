@@ -43,8 +43,18 @@
     </div>
 </header>
 
+<div class="row">
+  <div class="offset-by-four four columns">
+    <%= form_for @subscriber, :html => { :multipart => true } do |f| %>
+    <%= f.label :email, "Send us your email and never miss a post" %>
+    <%= f.text_field :email %>
+    <%= f.submit "Subscribe"%>
+    <% end %>
+  </div>
+</div>  
+
 <div class="row"> 
-   <div id="postSection" class="all-post-container ten columns">
+   <div r="postSection" class="all-post-container ten columns">
     <div class="post fade-in one"> 
     <% @posts.each do |post| %>
       <div class="post-container">

@@ -41,6 +41,10 @@
     <%= f.label :content %><br>
     <%= f.cktext_area :content, :ckeditor => {:language => 'en'} %>
   </div>
+  <%= f.fields_for :youtubes do |p| %>
+         <%= p.label :link %><br>
+         <%= p.text_field :link, name: "youtubes[link][]" %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

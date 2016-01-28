@@ -46,7 +46,7 @@
                         <td><%= p.title %></td>
                         <td><%= p.created_at %></td>
                         <td><%= p.name %></td>
-                        <td><%= link_to 'Edit', edit_post_path(p) %> </td>
+                        <td><%= link_to 'Edit', edit_post_path(p) %> | <%= link_to "delete", post_path(p), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %> </td>
                       </tr>
                       <% end %>
                     </tbody>  
