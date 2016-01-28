@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  impressionist :actions=>[:admin,:index]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
  
   def show
     @youtube = @post.youtubes.all
+    @post.impressionist_count(:filter=>:all)
   end
 
   def edit 

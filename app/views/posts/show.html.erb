@@ -22,6 +22,10 @@
 
                     	<%= raw(@post.content) %>
 
+                        <div class="views">
+                          views: <%=@post.impressionist_count %>
+                        </div>
+
                     	<%= render "disqus" %>
                     </p>
                 </div>    
