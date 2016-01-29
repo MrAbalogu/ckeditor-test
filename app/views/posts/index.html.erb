@@ -59,7 +59,7 @@
     <% @posts.each do |post| %>
       <div class="post-container">
           <div class="title-container font-huge-regular"><%= truncate(post.title) %></div>
-          <div class="date-container font-small-regular">Posted at: <%= post.created_at %></div>
+          <div class="date-container font-small-regular">Posted at: <%= post.created_at %> <div style="float:right;"> By: <%= post.name %> </div></div>
           <div class="post-sub-container">
             <div class="post-image-container" style="background-image: url(<%=post.avatar.url(:medium)%>);"></div>
             <div class="desc-container font-extrasmall-light"> <%= truncate(post.description, length:300 ) %>  </div>

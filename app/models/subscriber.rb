@@ -6,9 +6,10 @@ class Subscriber < ActiveRecord::Base
 		                   format: { with: VALID_EMAIL_REGEX },
 		                 uniqueness: { case_sensitive: false }
 
-	# after_create :send_notification
+	after_create :send_notification
 
-	# def send_notification
-	# 	SubscriptionMailer.new_subscriber(self).deliver
-	# end 	
+	def send_notification
+		SubscriptionMailer.new_subscriber(self).deliver
+	end 		                 
+	 	
 end

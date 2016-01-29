@@ -42,8 +42,14 @@
                       <% end %>
                     </tbody>  
                     </thead>
-
                 </table>
+
+                <h3>All Subscribers</h3>
+                <p>Total: <%= @subscribers.count %></p>
+                    <div style="display:block; width:100px;">
+                    <% @subscribers.each do |s| %>
+                        <%= s.email %>
+                    <% end %></div>
             </div>
         </div>
     </div>

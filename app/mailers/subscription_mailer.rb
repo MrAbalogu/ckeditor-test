@@ -1,8 +1,8 @@
 class SubscriptionMailer < ApplicationMailer
 
-	def send_email(email)    
-	  # @post = post
-	  mail(to: email, subject: 'hello')
+	def new_post(post)   
+	  @post = Post.new	 
+	  mail(to: "chineduabalogu@yahoo.com", subject: "New post alert")
 	end
 
 	def new_subscriber(subscriber)

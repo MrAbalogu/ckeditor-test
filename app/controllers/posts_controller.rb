@@ -34,6 +34,7 @@ class PostsController < ApplicationController
 
   def admin
     @posts = Post.all.order("created_at DESC")
+    @subscribers = Subscriber.all.order("created_at DESC")
   end   
 
   def update

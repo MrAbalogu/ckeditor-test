@@ -3,17 +3,13 @@ class SubscribersController < ApplicationController
   end
 
   def create
-  	@subscriber = Subscriber.new(subscriber_params)
-    if @subscriber.save
-    	flash[:notice] = "Email has been added to our list"
-    	redirect_to posts_path
-    else 
-      flash[:notice] = "Invalid Email address"
-      redirect_to posts_path
-    end  
+    @subscriber = Subscriber.create(subscriber_params)
+    flash[:notice] = "Email has been added to our list"
+    redirect_to posts_path
   end
 
   def new
+    @subscribers = Subscribers.new
   end
 
   def show
@@ -22,6 +18,6 @@ class SubscribersController < ApplicationController
   private 
 
   def subscriber_params
-  	params.require(:subscriber).permit(:email)
-  end	
+    params.require(:subscriber).permit(:email)
+  end 
 end
