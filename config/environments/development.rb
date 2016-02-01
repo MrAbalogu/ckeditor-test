@@ -49,8 +49,8 @@ Rails.application.configure do
     :address   => "smtp.mandrillapp.com",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => "chineduabalogu@gmail.com",
-    :password  => "wGYdS6125OwLrIOJ7c75mg", # SMTP password is any valid API key
+    :user_name => ENV["EMAIL_LOGIN"], # chineduabalogu@gmail.com
+    :password  => ENV["EMAIL_PASSWORD"], # SMTP password is any valid API key wGYdS6125OwLrIOJ7c75mgss
     :authentication => 'plain', # Mandrill supports 'plain' or 'login'
     :domain => 'localhost:3000', # your domain to identify your server when connecting
   }

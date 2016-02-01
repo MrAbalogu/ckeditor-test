@@ -1,1 +1,3 @@
-<h4>Heyyy Guess what? I have just made a new post called <%= @post.title %> haha </h4>>
+<h4>
+Heyyy Guess what? I have just made a new post called <%= link_to @post.title, post_path(@post) %> 
+</h4>

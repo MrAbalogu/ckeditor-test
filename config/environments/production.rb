@@ -79,4 +79,28 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # SMTP mailer settings configuration with mandrill 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: "everydaypeoplebylydia.co" }
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :user_name => ENV["EMAIL_LOGIN"],
+    :password  => ENV["EMAIL_PASSWORD"], # SMTP password is any valid API key
+    :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+    :domain => 'everydaypeoplebylydia.co', # your domain to identify your server when connecting
+  }
+
+  # Paperclip assets storage configuration settings 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_region => ENV['AWS_REGION'],
+    :s3_credentials => {
+    :bucket => ENV['S3_BUCKET_NAME'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }}
 end

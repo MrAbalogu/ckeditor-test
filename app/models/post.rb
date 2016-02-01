@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
   	after_create :send_notification
 
 	def send_notification
-		SubscriptionMailer.new_post(self).deliver
+		SubscriptionMailer.new_post(self, self).deliver
 	end 
 
 end
