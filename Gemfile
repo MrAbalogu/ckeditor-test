@@ -15,7 +15,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'shareable'
 gem 'figaro'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
