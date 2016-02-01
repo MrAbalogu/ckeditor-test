@@ -15,6 +15,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'shareable'
 gem 'figaro'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
@@ -33,5 +34,5 @@ group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'
-  gem 'aws-sdk'
+  
 end
