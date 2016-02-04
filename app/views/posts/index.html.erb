@@ -1,84 +1,78 @@
-<header class="intro-header header1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Inspiring a new Generation!</h1>
-                    <hr class="small">
-                </div>
-                <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="https://twitter.com/MrAbalogu_">
-                                <span class="fa-stack fa-lg myIcon">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/chinedu.abalogu">
-                                <span class="fa-stack fa-lg myIcon">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/MrAbalogu/Blog">
-                                <span class="fa-stack fa-lg myIcon">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<!---header---->      
+<div class="header">  
+  <div class="container">
+      <div class="logo">
+      <a href="/posts">
+        <div class="logo-name">
+          <h1 style="padding-top: 40%">ONYI.ME</h1> 
         </div>
-            </div>
-        </div>
+      </a>
     </div>
-</header>
-
-<div class="row">
-  <div class="offset-by-four four columns">
-    <%= form_for @subscriber, :html => { :multipart => true } do |f| %>
-    <%= f.label :email, "Send us your email and never miss a post" %>
-    <%= f.text_field :email %>
-    <%= f.submit "Subscribe"%>
-    <% end %>
-  </div>
-</div>  
-
-<div class="row"> 
-   <div r="postSection" class="all-post-container ten columns">
-    <div class="post fade-in one"> 
-    <% @posts.each do |post| %>
-      <div class="post-container">
-          <div class="title-container font-huge-regular"><%= truncate(post.title) %></div>
-          <div class="date-container font-small-regular">Posted at: <%= post.created_at %> <div style="float:right;"> By: <%= post.name %> </div></div>
-          <div class="post-sub-container">
-            <div class="post-image-container" style="background-image: url(<%=post.avatar.url(:medium)%>);"></div>
-            <div class="desc-container font-extrasmall-light"> <%= truncate(post.description, length:300 ) %>  </div>
-            <%= button_to "Read", post_path(post), :method => "get", :class => "post-button" %>
-          </div>
+     <!---start-top-nav---->
+    <div class="top-menu">
+      <div class="search">
+        <form>
+        <input type="text" placeholder="" required="">
+        <input type="submit" value=""/>
+        </form>
       </div>
-  <% end %>     
+      <span class="menu"> </span> 
+      <ul>
+        <li class="active"><a href="index.html">HOME</a></li>           
+        <li><a href="/about">ABOUT</a></li> 
+        <div class="clearfix"> </div>
+      </ul>
     </div>
-  </div> 
-  <div class="two columns post_container">
-  <% cache do %>
-    All Posts:
-    <div class="posts_list">
-    <% @posts.each do |post| %>
-      <%= link_to post.title, post_path(post) %>
-    <% end %>
-    </div>
-  <% end %>  
+    <div class="clearfix"></div>
+      <script>
+        $("span.menu").click(function(){
+        $(".top-menu ul").slideToggle("slow" , function(){
+        });
+        });
+      </script>
+    <!---//End-top-nav---->         
   </div>
 </div>
-<br>
-
+<!--/header-->
+<div class="content">
+   <div class="container">
+     <div class="content-grids">
+       <div class="col-md-8 content-main">
+        <% @posts.each do |post| %>
+         <div class="content-grid">          
+           <div class="content-grid-info">
+             <div class="post-image-container" style="background-image: url(<%=post.avatar.url%>);"></div>
+             <div class="post-info">
+             <h4><%= link_to truncate(post.title), post_path(post) %> <%= post.created_at %></h4>
+             <p><%= truncate(post.description, length:300 ) %></p>
+             <%= link_to "READ MORE", post_path(post) %>
+             </div>
+           </div>
+           
+         </div>
+        <% end %> 
+        </div>
+        <div class="col-md-4 content-right">
+         <div class="recent">
+           <h3>RECENT POSTS</h3>
+           <% cache do %>
+           <ul>
+           <% @posts.each do |post| %>
+           <li><%= link_to post.title, post_path(post) %></li>
+           </ul>
+           <% end %>
+           <% end %>
+         </div>
+         
+         <div class="clearfix"></div>
+          <%= form_for @subscriber, :html => { :multipart => true } do |f| %>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <%= f.submit "Subscribe"%>
+          <% end %>
+         <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+</div> 

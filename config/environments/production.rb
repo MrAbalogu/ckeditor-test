@@ -83,7 +83,7 @@ Rails.application.configure do
   # SMTP mailer settings configuration with mandrill 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: "everydaypeoplebylydia.co" }
+  config.action_mailer.default_url_options = { host: "onyi.me" }
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
@@ -91,7 +91,7 @@ Rails.application.configure do
     :user_name => ENV["EMAIL_LOGIN"],
     :password  => ENV["EMAIL_PASSWORD"], # SMTP password is any valid API key
     :authentication => 'plain', # Mandrill supports 'plain' or 'login'
-    :domain => 'everydaypeoplebylydia.co', # your domain to identify your server when connecting
+    :domain => 'onyi.me', # your domain to identify your server when connecting
   }
 
   # Paperclip assets storage configuration settings 

@@ -14,17 +14,11 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-1">
                     <p> 
-                        <div class="video-container"> <% @youtube.each do |v| %>
-                          <%= embed(v.link) %>
-                        <% end %> </div>
 
                     	<%= raw(@post.content) %>
 
-                        <div class="views">
-                          views: <%=@post.impressionist_count %>
-                        </div>
                         <div> <%= render_shareable %> </div>
 
                     	<%= render "disqus" %>
