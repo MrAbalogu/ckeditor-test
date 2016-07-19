@@ -38,8 +38,8 @@ margin-top:3.5em;
 }
 .search {
 width: 55%;
-position:relative;
-}
+/*position:relative;
+*/}
 .search form {
 border: 1px solid #dbdbdb;
 background:#dbdbdb;
